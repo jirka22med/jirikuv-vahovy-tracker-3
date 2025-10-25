@@ -36,20 +36,20 @@ Export a Záloha: Umožňuje export všech dat do formátů CSV a PDF a také vy
 Projekt je postaven na principech ploché struktury (Flat File Structure), která byla zvolena pro minimalizaci chyb v cestách a zajištění bezproblémového nasazení na GitHub Pages.
 
 
-┏━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓          
-┃     Soubor           ┃                    Účel                          ┃               Poznámka                             ┃                  
-┣━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫       
-┃ index.html           ┃ Hlavní struktura, HTML a UI.                     ┃ Zahrnuje odkazy na všechny moduly.                 ┃
-┃ style.css            ┃ Vizuální styly (Dark Mode).                      ┃ Využívá CSS proměnné pro snadnou správu vzhledu.   ┃ 
-┃ script.js            ┃ Hlavní aplikační logika, výpočty, události.      ┃ "Mozek" aplikace s veškerou logikou.               ┃
-┃ auth.js              ┃ Logika pro přihlášení/odhlášení (Firebase Auth). ┃ Stará se o uživatelské relace.                     ┃
-┃ firebaseFunctions.js ┃ Databázové operace (Firestore).                  ┃ Zajišťuje bezpečné ukládání dat.                   ┃
-┃ service-worker.js    ┃ Cache pro offline provoz (PWA).                  ┃ Implementuje strategii Cache-First.                ┃
-┃ manifest.json        ┃ Metadata pro instalaci PWA.                      ┃ Nastavuje ikonu, jméno a chování aplikace.         ┃
-┃ jirkuv-hlidac.js     ┃ Unikátní Dev Tool.                               ┃ Pokročilý logovací nástroj pro ladění chyb.        ┃
-┃ favicon-loader.js    ┃ Unikátní Modul.                                  ┃ Dynamické přepínání ikony dle zařízení/denní doby. ┃ 
-┃ LICENSE              ┃ Licenční podmínky projektu.                      ┃ GNU General Public License (GPL) v3.               ┃
-┗━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+## 📂 Struktura Projektu
+
+| Soubor | Účel | Poznámka |
+|:-------|:-----|:---------|
+| **index.html** | Hlavní struktura, HTML a UI. | Zahrnuje odkazy na všechny moduly. |
+| **style.css** | Vizuální styly (Dark Mode). | Využívá CSS proměnné pro snadnou správu vzhledu. |
+| **script.js** | Hlavní aplikační logika, výpočty, události. | "Mozek" aplikace s veškerou logikou. |
+| **auth.js** | Logika pro přihlášení/odhlášení (Firebase Auth). | Stará se o uživatelské relace. |
+| **firebaseFunctions.js** | Databázové operace (Firestore). | Zajišťuje bezpečné ukládání dat. |
+| **service-worker.js** | Cache pro offline provoz (PWA). | Implementuje strategii Cache-First. |
+| **manifest.json** | Metadata pro instalaci PWA. | Nastavuje ikonu, jméno a chování aplikace. |
+| **jirkuv-hlidac.js** | Unikátní Dev Tool. | Pokročilý logovací nástroj pro ladění chyb. |
+| **favicon-loader.js** | Unikátní Modul. | Dynamické přepínání ikony dle zařízení/denní doby. |
+| **LICENSE** | Licenční podmínky projektu. | GNU General Public License (GPL) v3. |
 
 
 🛠 Instalace a Použití
