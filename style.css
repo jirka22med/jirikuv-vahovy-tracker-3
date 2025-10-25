@@ -1,0 +1,1100 @@
+/* ======================================= */
+/* 1. CSS PROMĚNNÉ (CUSTOM PROPERTIES)
+   Zavádíme je pro lepší správu tvého Dark Mode schématu.
+   Barvy odpovídají tvým stávajícím!
+/* ======================================= */
+:root {
+    --color-bg-primary: #0d1117;       /* Tmavé pozadí (body, input) */
+    --color-bg-secondary: #1f2633;     /* Pozadí karet */
+    --color-text-primary: #f0f0f0;     /* Světlý text */
+    --color-accent-blue: #00d9ff;      /* Akcentová modrá (hlavičky, border, tlačítka) */
+    --color-accent-green: #00ff99;     /* Akcentová zelená (karty h3, loss) */
+    --color-border: #444;              /* Barva okrajů */
+}
+
+body {
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: Consolas, monospace;
+    padding: 0px;
+    margin: 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    color: var(--color-accent-blue);
+    text-align: center;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 20px;
+    /* PŘIDÁNO: Hladký přechod pro transformaci a okraj */
+    transition: transform 0.3s ease, border-color 0.3s ease; 
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent-blue);
+}
+
+.card h3 {
+    color: var(--color-accent-green);
+    margin-top: 0;
+}
+
+.form-group {
+    margin: 15px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--color-accent-blue);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    border-radius: 5px;
+    box-sizing: border-box;
+    /* PŘIDÁNO: Hladký přechod pro border */
+    transition: border-color 0.3s ease; 
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--color-accent-blue);
+    outline: none;
+    /* PŘIDÁNO: Silnější focus pro lepší viditelnost */
+    box-shadow: 0 0 0 2px rgba(0, 217, 255, 0.5); 
+}
+
+button {
+    background: var(--color-accent-blue);
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    /* PŘIDÁNO: Hladký přechod pro barvu pozadí */
+    transition: background 0.3s ease, transform 0.2s; 
+}
+
+button:hover {
+    background: #00b8cc;
+    transform: translateY(-1px);
+}
+
+button.danger {
+    background: #ff5555;
+    color: #fff;
+}
+
+button.success {
+    background: #55ff99;
+    color: #000;
+}
+
+button.fullscreen {
+    background: var(--color-accent-blue);
+    color: #000;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    font-size: 1.2rem;
+}
+
+button.fullscreen:hover {
+    background: #00b8cc;
+    transform: scale(1.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: var(--color-bg-secondary);
+    font-size: 0.9em;
+}
+
+th, td {
+    border: 1px solid var(--color-border);
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: var(--color-bg-primary);
+    color: var(--color-accent-blue);
+}
+
+.gain {
+    color: #ff5555;
+}
+
+.loss {
+    color: var(--color-accent-green);
+}
+
+.bmi-normal { color: var(--color-accent-green); }
+.bmi-underweight { color: var(--color-accent-blue); }
+.bmi-overweight { color: #ffff55; }
+.bmi-obese { color: #ff5555; }
+
+.alert {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    background: red;
+    color: #fff;
+    display: none;
+}
+
+.alert.show {
+    display: block;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.stat-item {
+    background: var(--color-bg-secondary);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+}
+
+.stat-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-accent-blue);
+}
+.stat-label {
+    font-size: 0.8em;
+    color: #ccc;
+    margin-top: 3px;
+}
+
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--color-accent-blue);
+    color: #000;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 1000;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-accent-blue), var(--color-accent-green));
+    transition: width 0.3s;
+}
+
+.tabs {
+    display: flex;
+    margin: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    color: #ccc;
+    /* PŘIDÁNO: Hladký přechod pro stav tabu */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease; 
+}
+
+.tab.active {
+    color: var(--color-accent-blue);
+    border-bottom-color: var(--color-accent-blue);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ======================================= */
+/* 2. OPTIMALIZACE GRAFŮ (LEPŠÍ ČITELNOST)
+   Zvětšení výšky a šířky kontejnerů pro lepší čtení os.
+/* ======================================= */
+
+/* ======================================= */
+/* 2. OPTIMALIZACE GRAFŮ (LEPŠÍ ŠÍŘKA & PEVNÁ VÝŠKA)
+   Nastavení pevné výšky, aby nedocházelo k "přelévání".
+/* ======================================= */
+
+.charts-container {
+    display: grid;
+    /* ✅ KLÍČOVÁ ZMĚNA: Garantuje přesně 3 sloupce. 
+       Každý sloupec zabere 1fr (jednu třetinu) dostupné šířky. */
+    grid-template-columns: repeat(3, 1fr); 
+    
+    background-color: #1a222d; 
+    margin-top: 20px;
+    gap: 10px;
+    padding: 10px; 
+     
+    /* Poznámka: Při 3 sloupcích se obvykle hodí zarovnání do středu */
+    justify-items: stretch;
+}
+     
+
+.chart-card {
+    background-color: var(--color-bg-secondary);
+     
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    overflow-x: auto;
+    /* KLÍČOVÁ ZMĚNA: Pevně definovaná výška */
+    height: 230px; 
+    width: 485px;
+    /* Zajistí, že Canvas uvnitř bude mít volný prostor */
+     
+    
+}
+.chart-card:hover {
+    border-color: var(--color-accent-blue);
+}
+
+.chart-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: var(--color-accent-green);
+    text-align: center;
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    /* Canvas se roztáhne na zbývající dostupnou výšku v rámci 380px rodiče */
+    height: 75% !important; 
+    max-height: none !important; 
+}
+/* ===== MOBILNÍ RESPONZIVITA - KOMPLETNÍ @MEDIA QUERIES ===== */
+
+
+/* ===== FULLSCREEN REŽIM OPTIMALIZACE ===== 
+   (Zachováno a upraveno pro nové grafové výšky)
+*/
+
+:fullscreen .chart-card,
+:-webkit-full-screen .chart-card,
+:-moz-full-screen .chart-card,
+:-ms-fullscreen .chart-card {
+    padding: 25px;
+    /* ZVÝŠENO: Více prostoru ve fullscreenu */
+    min-height: 500px; 
+}
+
+:fullscreen .chart-card canvas,
+:-webkit-full-screen .chart-card canvas,
+:-moz-full-screen .chart-card canvas,
+:-ms-fullscreen .chart-card canvas {
+    /* Umožní canvasu vyplnit celou dostupnou výšku v rámci min-height: 500px */
+    max-height: none;
+    min-height: 400px; 
+}
+
+/* Ostatní fullscreen pravidla (nezměněno) */
+:fullscreen table,
+:-webkit-full-screen table,
+:-moz-full-screen table,
+:-ms-fullscreen table {
+    width: 100%;
+    height: 900vh;
+    max-height: none;
+    font-size: 1rem;
+    display: table;
+    overflow: auto;
+    border-radius: 0;
+    margin: 0;
+}
+
+/* ===== MOBILNÍ RESPONZIVITA - KOMPLETNÍ @MEDIA QUERIES ===== */
+
+/* ===== TABLETS A MENŠÍ DESKTOPY (1200px a méně) ===== */
+@media (max-width: 1200px) {
+    .charts-container {
+        /* 2 sloupce pro tablety v landscape */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .chart-card {
+        height: 280px;
+        width: 100%;
+    }
+    
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ===== TABLETY V PORTRAIT REŽIMU (900px a méně) ===== */
+@media (max-width: 900px) {
+    .container {
+        max-width: 100%;
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    .dashboard {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .charts-container {
+        /* 1 sloupec pro tablety v portrait */
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .chart-card {
+        height: 300px;
+        width: 100%;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    table {
+        font-size: 0.8em;
+    }
+    
+    th, td {
+        padding: 6px;
+    }
+    
+    button.fullscreen {
+        width: 45px;
+        height: 45px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* ===== MOBILNÍ TELEFONY - LANDSCAPE (768px a méně) ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .charts-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 8px;
+    }
+    
+    .chart-card {
+        height: 280px;
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .chart-card h3 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .stat-item {
+        padding: 8px;
+    }
+    
+    .stat-value {
+        font-size: 1.2em;
+    }
+    
+    .stat-label {
+        font-size: 0.75em;
+    }
+    
+    .tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    
+    .tab {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+    
+    input, select, textarea {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+    
+    button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        margin: 3px;
+    }
+    
+    button.fullscreen {
+        width: 40px;
+        height: 40px;
+        bottom: 12px;
+        right: 12px;
+        font-size: 1rem;
+    }
+    
+    table {
+        font-size: 0.75em;
+        display: block;
+        overflow-x: auto;
+    }
+    
+    th, td {
+        padding: 5px;
+        min-width: 60px;
+    }
+    
+    .notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== MOBILNÍ TELEFONY - PORTRAIT (576px a méně) ===== */
+@media (max-width: 576px) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        padding: 5px;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+        margin: 8px 0;
+    }
+    
+    h2 {
+        font-size: 1.1rem;
+    }
+    
+    .dashboard {
+        gap: 10px;
+        margin: 10px 0;
+    }
+    
+    .card {
+        padding: 12px;
+        border-radius: 8px;
+    }
+    
+    .charts-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 5px;
+    }
+    
+    .chart-card {
+        height: 250px;
+        width: 100%;
+        padding: 12px;
+    }
+    
+    .chart-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+    
+    .chart-card canvas {
+        height: 70% !important;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        margin: 15px 0;
+    }
+    
+    .stat-item {
+        padding: 10px;
+    }
+    
+    .stat-value {
+        font-size: 1.3em;
+    }
+    
+    .form-group {
+        margin: 10px 0;
+    }
+    
+    label {
+        font-size: 0.9rem;
+        margin-bottom: 3px;
+    }
+    
+    input, select, textarea {
+        padding: 6px;
+        font-size: 0.85rem;
+    }
+    
+    button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        margin: 2px;
+        width: 100%;
+    }
+    
+    button.fullscreen {
+        width: 35px;
+        height: 35px;
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.9rem;
+    }
+    
+    table {
+        font-size: 0.7em;
+    }
+    
+    th, td {
+        padding: 4px;
+        min-width: 50px;
+    }
+    
+    .tabs {
+        margin: 10px 0;
+    }
+    
+    .tab {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .alert {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    
+    .notification {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    
+    .progress-bar {
+        height: 15px;
+    }
+}
+
+/* ===== VELMI MALÉ DISPLEJE (400px a méně) ===== */
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.1rem;
+    }
+    
+    h2 {
+        font-size: 1rem;
+    }
+    
+    .chart-card {
+        height: 220px;
+        padding: 10px;
+    }
+    
+    .chart-card h3 {
+        font-size: 0.9rem;
+    }
+    
+    .stat-value {
+        font-size: 1.1em;
+    }
+    
+    .stat-label {
+        font-size: 0.7em;
+    }
+    
+    button.fullscreen {
+        width: 32px;
+        height: 32px;
+        bottom: 8px;
+        right: 8px;
+        font-size: 0.8rem;
+    }
+    
+    table {
+        font-size: 0.65em;
+    }
+    
+    th, td {
+        padding: 3px;
+        min-width: 45px;
+    }
+}
+
+/* ===== LANDSCAPE ORIENTACE NA MOBILECH ===== */
+@media (max-width: 900px) and (orientation: landscape) {
+    .charts-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .chart-card {
+        height: 260px;
+    }
+    
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ===== FULLSCREEN REŽIM - RESPONZIVNÍ @MEDIA ===== */
+
+/* Desktop Fullscreen (nad 1200px) */
+@media (min-width: 1201px) {
+    :fullscreen .charts-container,
+    :-webkit-full-screen .charts-container,
+    :-moz-full-screen .charts-container,
+    :-ms-fullscreen .charts-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    :fullscreen .chart-card,
+    :-webkit-full-screen .chart-card,
+    :-moz-full-screen .chart-card,
+    :-ms-fullscreen .chart-card {
+        height: 500px;
+        padding: 25px;
+    }
+    
+    :fullscreen .chart-card canvas,
+    :-webkit-full-screen .chart-card canvas,
+    :-moz-full-screen .chart-card canvas,
+    :-ms-fullscreen .chart-card canvas {
+        height: 85% !important;
+        min-height: 400px;
+    }
+    
+    :fullscreen .stats,
+    :-webkit-full-screen .stats,
+    :-moz-full-screen .stats,
+    :-ms-fullscreen .stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    
+    :fullscreen .stat-item,
+    :-webkit-full-screen .stat-item,
+    :-moz-full-screen .stat-item,
+    :-ms-fullscreen .stat-item {
+        padding: 20px;
+    }
+    
+    :fullscreen .stat-value,
+    :-webkit-full-screen .stat-value,
+    :-moz-full-screen .stat-value,
+    :-ms-fullscreen .stat-value {
+        font-size: 2em;
+    }
+    
+    :fullscreen .stat-label,
+    :-webkit-full-screen .stat-label,
+    :-moz-full-screen .stat-label,
+    :-ms-fullscreen .stat-label {
+        font-size: 1em;
+    }
+}
+
+/* Tablet Fullscreen (769px - 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+    :fullscreen .charts-container,
+    :-webkit-full-screen .charts-container,
+    :-moz-full-screen .charts-container,
+    :-ms-fullscreen .charts-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    :fullscreen .chart-card,
+    :-webkit-full-screen .chart-card,
+    :-moz-full-screen .chart-card,
+    :-ms-fullscreen .chart-card {
+        height: 450px;
+        padding: 20px;
+    }
+    
+    :fullscreen .chart-card canvas,
+    :-webkit-full-screen .chart-card canvas,
+    :-moz-full-screen .chart-card canvas,
+    :-ms-fullscreen .chart-card canvas {
+        height: 80% !important;
+        min-height: 350px;
+    }
+    
+    :fullscreen .stats,
+    :-webkit-full-screen .stats,
+    :-moz-full-screen .stats,
+    :-ms-fullscreen .stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+    
+    :fullscreen .stat-item,
+    :-webkit-full-screen .stat-item,
+    :-moz-full-screen .stat-item,
+    :-ms-fullscreen .stat-item {
+        padding: 18px;
+    }
+    
+    :fullscreen .stat-value,
+    :-webkit-full-screen .stat-value,
+    :-moz-full-screen .stat-value,
+    :-ms-fullscreen .stat-value {
+        font-size: 1.8em;
+    }
+}
+
+/* Mobile Fullscreen (do 768px) */
+@media (max-width: 768px) {
+    :fullscreen .charts-container,
+    :-webkit-full-screen .charts-container,
+    :-moz-full-screen .charts-container,
+    :-ms-fullscreen .charts-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 10px;
+    }
+    
+    :fullscreen .chart-card,
+    :-webkit-full-screen .chart-card,
+    :-moz-full-screen .chart-card,
+    :-ms-fullscreen .chart-card {
+        height: 400px;
+        padding: 15px;
+    }
+    
+    :fullscreen .chart-card h3,
+    :-webkit-full-screen .chart-card h3,
+    :-moz-full-screen .chart-card h3,
+    :-ms-fullscreen .chart-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    :fullscreen .chart-card canvas,
+    :-webkit-full-screen .chart-card canvas,
+    :-moz-full-screen .chart-card canvas,
+    :-ms-fullscreen .chart-card canvas {
+        height: 75% !important;
+        min-height: 280px;
+    }
+    
+    :fullscreen .stats,
+    :-webkit-full-screen .stats,
+    :-moz-full-screen .stats,
+    :-ms-fullscreen .stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    :fullscreen .stat-item,
+    :-webkit-full-screen .stat-item,
+    :-moz-full-screen .stat-item,
+    :-ms-fullscreen .stat-item {
+        padding: 15px;
+    }
+    
+    :fullscreen .stat-value,
+    :-webkit-full-screen .stat-value,
+    :-moz-full-screen .stat-value,
+    :-ms-fullscreen .stat-value {
+        font-size: 1.6em;
+    }
+}
+
+/* Velmi malé displeje Fullscreen (do 576px) */
+@media (max-width: 576px) {
+    :fullscreen .charts-container,
+    :-webkit-full-screen .charts-container,
+    :-moz-full-screen .charts-container,
+    :-ms-fullscreen .charts-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 8px;
+    }
+    
+    :fullscreen .chart-card,
+    :-webkit-full-screen .chart-card,
+    :-moz-full-screen .chart-card,
+    :-ms-fullscreen .chart-card {
+        height: 350px;
+        padding: 12px;
+    }
+    
+    :fullscreen .chart-card h3,
+    :-webkit-full-screen .chart-card h3,
+    :-moz-full-screen .chart-card h3,
+    :-ms-fullscreen .chart-card h3 {
+        font-size: 1rem;
+    }
+    
+    :fullscreen .chart-card canvas,
+    :-webkit-full-screen .chart-card canvas,
+    :-moz-full-screen .chart-card canvas,
+    :-ms-fullscreen .chart-card canvas {
+        height: 70% !important;
+        min-height: 240px;
+    }
+    
+    :fullscreen .stats,
+    :-webkit-full-screen .stats,
+    :-moz-full-screen .stats,
+    :-ms-fullscreen .stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    :fullscreen .stat-item,
+    :-webkit-full-screen .stat-item,
+    :-moz-full-screen .stat-item,
+    :-ms-fullscreen .stat-item {
+        padding: 12px;
+    }
+    
+    :fullscreen .stat-value,
+    :-webkit-full-screen .stat-value,
+    :-moz-full-screen .stat-value,
+    :-ms-fullscreen .stat-value {
+        font-size: 1.4em;
+    }
+    
+    :fullscreen .stat-label,
+    :-webkit-full-screen .stat-label,
+    :-moz-full-screen .stat-label,
+    :-ms-fullscreen .stat-label {
+        font-size: 0.75em;
+    }
+}
+
+/* Fullscreen - Tabulky (všechny rozlišení) */
+:fullscreen table,
+:-webkit-full-screen table,
+:-moz-full-screen table,
+:-ms-fullscreen table {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 90vh;
+    font-size: 1rem;
+    display: table;
+    overflow: auto;
+    border-radius: 0;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    :fullscreen table,
+    :-webkit-full-screen table,
+    :-moz-full-screen table,
+    :-ms-fullscreen table {
+        font-size: 0.85rem;
+    }
+    
+    :fullscreen th,
+    :-webkit-full-screen th,
+    :-moz-full-screen th,
+    :-ms-fullscreen th,
+    :fullscreen td,
+    :-webkit-full-screen td,
+    :-moz-full-screen td,
+    :-ms-fullscreen td {
+        padding: 8px;
+    }
+}
+
+/* Fullscreen - Skrytí nepotřebných prvků */
+:fullscreen .notification,
+:-webkit-full-screen .notification,
+:-moz-full-screen .notification,
+:-ms-fullscreen .notification,
+:fullscreen button.fullscreen,
+:-webkit-full-screen button.fullscreen,
+:-moz-full-screen button.fullscreen,
+:-ms-fullscreen button.fullscreen {
+    display: none !important;
+}
+
+/* Fullscreen - Scrollbar styling */
+:fullscreen ::-webkit-scrollbar,
+:-webkit-full-screen ::-webkit-scrollbar,
+:-moz-full-screen ::-webkit-scrollbar,
+:-ms-fullscreen ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+:fullscreen ::-webkit-scrollbar-track,
+:-webkit-full-screen ::-webkit-scrollbar-track,
+:-moz-full-screen ::-webkit-scrollbar-track,
+:-ms-fullscreen ::-webkit-scrollbar-track {
+    background: #1f2633;
+}
+
+:fullscreen ::-webkit-scrollbar-thumb,
+:-webkit-full-screen ::-webkit-scrollbar-thumb,
+:-moz-full-screen ::-webkit-scrollbar-thumb,
+:-ms-fullscreen ::-webkit-scrollbar-thumb {
+    background: var(--color-accent-blue);
+    border-radius: 6px;
+}
+
+:fullscreen ::-webkit-scrollbar-thumb:hover,
+:-webkit-full-screen ::-webkit-scrollbar-thumb:hover,
+:-moz-full-screen ::-webkit-scrollbar-thumb:hover,
+:-ms-fullscreen ::-webkit-scrollbar-thumb:hover {
+    background: #00b8cc;
+}
+
+@media (max-width: 768px) {
+    :fullscreen ::-webkit-scrollbar,
+    :-webkit-full-screen ::-webkit-scrollbar,
+    :-moz-full-screen ::-webkit-scrollbar,
+    :-ms-fullscreen ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Fullscreen - Landscape orientace na mobilech */
+@media (max-width: 900px) and (orientation: landscape) {
+    :fullscreen .charts-container,
+    :-webkit-full-screen .charts-container,
+    :-moz-full-screen .charts-container,
+    :-ms-fullscreen .charts-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    :fullscreen .chart-card,
+    :-webkit-full-screen .chart-card,
+    :-moz-full-screen .chart-card,
+    :-ms-fullscreen .chart-card {
+        height: 380px;
+    }
+}
+
+/* ===== TISKOVÉ STYLY (BONUS) ===== */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .card, .chart-card {
+        border: 1px solid #000;
+        page-break-inside: avoid;
+    }
+    
+    button.fullscreen,
+    .notification {
+        display: none !important;
+    }
+    
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-card {
+        height: auto;
+        min-height: 300px;
+    }
+}
